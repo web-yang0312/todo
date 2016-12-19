@@ -1,0 +1,278 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: normal;
+    box-sizing: border-box;
+    font-family: '苹方';
+}
+$d-list:320px,375px,412px,414px;
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+}
+$design-size:750px;
+@each $i in $d-list{
+    @media screen and (min-width:#{$i}){
+        html{
+            font-size:100px * $i/$design-size;
+        }
+    }
+}
+@mixin top-bottom{
+    position: absolute;
+    top:0;
+    bottom:0;
+    margin: auto;
+}
+@mixin rl{
+    position: absolute;
+    left:0;
+    right:0;
+    margin: auto;
+}
+@mixin juzhong{
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin: auto;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id："162051" */
+  src: url('http://at.alicdn.com/t/font_fwe9m2d1xxbt9.eot');
+  src: url('http://at.alicdn.com/t/font_fwe9m2d1xxbt9.eot') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_fwe9m2d1xxbt9.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_fwe9m2d1xxbt9.ttf') format('truetype'),
+  url('http://at.alicdn.com/t/font_fwe9m2d1xxbt9.svg#iconfont') format('svg');
+}              
+.header{
+    width: 100%;
+    height:1rem;
+    background: #344561;
+    position: relative;
+    .menu{
+        width: 40px;
+        height:40px;
+        @include top-bottom;
+        left:0.4rem;
+        font-family: 'iconfont';
+        font-size: 30px;
+        color: #ffffff;
+        line-height: 45px;
+    }
+    .add{
+        width: 40px;
+        height:40px;
+        line-height: 45px;
+        @include top-bottom;
+        right:0.4rem;
+        font-family: 'iconfont';
+        font-size: 30px;
+        color: #ffffff;
+    }
+}
+.ul{
+    padding:0.4rem;
+    li{
+        position: relative;
+        width:100%;
+        height: 1.4rem;
+        font-size: 0.5rem;
+        margin-bottom: 0.2rem;
+        box-shadow: 0 0 3px rgba(0,0,0,0.3);
+        background:transparent;
+        background-size: cover;
+        .content{
+           @include top-bottom; 
+           left:0.2rem;
+           line-height: 1.4rem;
+           color: #FFFFFF;
+           width: 70%;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           white-space: nowrap;
+        }
+        .re{
+           background: url(../img/21.png)no-repeat;
+           background-size: contain;
+           width:35px;
+           height: 35px;
+           color:#000;
+           @include top-bottom; 
+           line-height: 1.4rem;
+           right:0.8rem;
+           display: block;
+        }
+        .delete{
+           background: url(../img/31.png)no-repeat;
+           background-size: contain;
+           width:25px;
+           height: 25px;
+           color:red;
+           @include top-bottom; 
+           line-height: 1.4rem;
+           right:0.1rem;
+           display: none;
+        }
+    }
+    
+}
+li.done {
+   .content{
+    color:#6f5e5e;
+    text-decoration: line-through;
+    }
+   .re{
+       display: none;
+   }
+   .delete{
+       display: block;
+   }
+}
+
+.footer{
+    width: 100%;
+    height:auto;
+//  box-shadow: 0 -3px 3px  rgba(0,0,0,0.2);
+    div{
+        width: 100% ;
+        float: left;
+        line-height:0.6rem;
+        font-weight: 400;
+        font-size: 20px;
+        padding: 0.2rem 0;
+        padding-left: 0.6rem;
+    }
+    .all{
+        border-left:0;
+    }
+}
+
+.tan{
+    transform: scale(0);
+    transition: all .5s linear;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    z-index: 10;
+    .chuang{
+        width:7rem;
+        height:4rem;
+        @include juzhong;
+        background: #FAFAFA;
+        h1{
+            padding-left:0.4rem;
+            color:#fff;
+            font-size: 25px;
+            line-height: 1rem;
+            height:1rem;
+            background:#344561;
+        }
+         input{
+            display: block;
+            height:1rem;
+            width: 5rem;
+            margin: auto; 
+            outline: none;
+            color: #fb7191;
+            font-size: 18px;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid #000;
+        }
+        .tijiao{
+            width: 6rem;
+            height: 0.8rem;
+            display: block;
+            color: #344561;
+            font-size: 0.4rem;
+            margin:0 auto;
+            text-align: center;
+            margin-top: 0.5rem;
+            line-height: 0.8rem;
+        }
+    }
+}
+.active{
+    transform: scale(1);
+}
+.side{
+    position: fixed;
+    width:100%;
+    transition: all 0.5s;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    top:0;
+    left:0;
+    transform: scaleX(0);
+    transform-origin: left;
+    .side-nav{
+        width:6rem;
+        height: 100%;
+        background: #FFFFFF;
+        .touxiang{
+            width: 100%;
+            height:4rem;
+            background: url(../img/6.jpg);
+            padding: {
+                    top:0.6rem;
+                    left:0.6rem;
+                }
+            .circle{
+                width: 1.8rem;
+                height: 1.8rem;
+                border-radius: 50%;
+                background: url(../img/13.jpg);
+                background-size: cover;
+            }
+            h2{
+                height: 0.8rem;
+                margin-top: 0.4rem;
+                padding-left:0.4rem;
+                color:#FFFFFF;
+            }
+        }
+        h1{
+            height:1rem;
+            font-size: 0.6rem;
+            font-weight: 500;
+            color:#000000;
+            line-height: 1rem;
+            padding-left:0.6rem;
+            margin: .2rem 0;
+        }
+        h3{
+            height:1rem;
+            font-size: 0.5rem;
+            font-weight: 500;
+            color:#000000;
+            line-height: 1rem;
+            padding-left:0.6rem;
+            margin: .2rem 0;
+        }
+    }
+    button{
+        width: 1rem;
+        height: 1rem;
+        position: absolute;
+        border-radius: 50%;
+        right:1.5rem;
+        bottom: 0rem;
+        background: url(../img/24.png)no-repeat;
+        background-size: contain;
+    }
+}
+.active2{
+    transform: scaleX(1);
+}
